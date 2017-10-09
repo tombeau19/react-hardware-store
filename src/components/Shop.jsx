@@ -20,7 +20,7 @@ class Shop extends Component {
           price: 0.12
         }
       ],
-      cartList: [{}]
+      cartList: []
     }
   }
 
@@ -28,6 +28,12 @@ class Shop extends Component {
     const newCartList = [...this.state.cartList]
     newCartList.push(newCartItem)
     this.setState({cartList: newCartList})
+  }
+
+  deleteProductFromCartList = (id) => {
+      const newCartList = [...this.state.cartList]
+      newCartList.splice(id, 1)
+      this.setState({cartList: newCartList})
   }
 
   addProductToProductList = (newProduct) => {
@@ -64,6 +70,7 @@ class Shop extends Component {
           </div>
           <CartView 
               cartList={this.state.cartList}
+              deleteProductFromCartList={this.deleteProductFromCartList}
           />
         </div>
       </div>

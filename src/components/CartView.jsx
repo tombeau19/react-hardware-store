@@ -14,6 +14,7 @@ class CartView extends Component {
                                 price={product.price}
                                 description={product.description}
                             />
+                            <button onClick={() => this.props.deleteProductFromCartList(index)}>Remove From Cart</button>
                         </div>
                     )
                 })}
