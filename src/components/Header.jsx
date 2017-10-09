@@ -1,35 +1,40 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import EditSaleItem from './EditSaleItem'
 
 class Header extends Component {
-    //takes in predefined parameters - sets defaults for us
-    constructor() {
-        //super is an ES6 keyword
-        //calls the constructor of what we are creating
-        super()
+  constructor () {
+    super()
 
-        this.state = {
-            itemCurrentlyOnSale: 'A Hammer!',
-            editSaleItem: false
-        }
+    this.state = {
+      itemCurrentlyOnSale: 'A Hammer!',
+      editSaleItem: false
     }
+  }
 
-    toggleEditSaleItem = () => {
-        console.log('hit toggle')
-        this.setState({editSaleItem: !this.state.editSaleItem})
-    }
+  toggleEditSaleItem = () => {
+    this.setState({editSaleItem: !this.state.editSaleItem})
+  }
 
-    render() {
-        return (
-            <div>
-                <h1>Hardware Store</h1>
-                <p>Currently On Sale: {this.state.itemCurrentlyOnSale}</p>
-                <button onClick={this.toggleEditSaleItem}>Edit sale Item</button>
-                <div>
-                    {this.state.editSaleItem ? <input type="text" placeholder={this.state.itemCurrentlyOnSale} /> : null}
-                </div>
-            </div>
-        )
-    }
+  handleItemCurrentlyOnSaleChange = (event) => {
+    this.setState({
+      itemCurrentlyOnSale: event.target.value
+    })
+  }
+
+  render () {
+    return (
+      <div>
+        <h1>Hardware Store</h1>
+        <p>Currently On Sale: {this.state.itemCurrentlyOnSale}</p>
+        <EditSaleItem
+          toggleEditSaleItem={this.toggleEditSaleItem}
+          handleItemCurrentlyOnSaleChange={this.handleItemCurrentlyOnSaleChange}
+          editSaleItem={this.state.editSaleItem}
+          itemCurrentlyOnSale={this.state.itemCurrentlyOnSale}
+        />
+      </div>
+    )
+  }
 }
 
-export default Header;
+export default Header
