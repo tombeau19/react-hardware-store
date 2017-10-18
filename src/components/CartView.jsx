@@ -18,10 +18,8 @@ class CartView extends Component {
                         </div>
                     )
                 })}
-
             </div>
         )
-
     }
 }
 
